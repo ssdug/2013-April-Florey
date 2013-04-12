@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DataDriver"
+                   namespace="DataDriver"
+                   default-lazy="false">
+  <class name="Weight" table="Weights">
+
+    <id name="Id" column="WeightKey" type="int" unsaved-value="0" >
+      <generator class="increment"/>
+    </id>
+
+    <property name="CatKey" column="CatKey" not-null="false" type="System.Int32" insert="true" update="true" />
+    <property name="Pounds" column="Weight" not-null="false" type="System.Decimal" insert="true" update="true" />
+    <property name="Date" column="Date" not-null="false" type="System.DateTime" insert="true" update="true" />
+
+  </class>
+</hibernate-mapping>

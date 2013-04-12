@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+                   assembly="DataDriver"
+                   namespace="DataDriver"
+                   default-lazy="false">
+  <class name="Cat" table="Cats">
+
+    <id name="Id" column="CatKey" type="int" unsaved-value="0" >
+      <generator class="increment"/>
+    </id>
+
+    <property name="Name" column="Name" not-null="false" type="System.String" length="20" insert="true" update="true" />
+    <property name="BirthDate" column="Birthdate" not-null="false" type="System.DateTime" insert="true" update="false" />
+    <property name="Gender" column="Gender" not-null="false" type="System.String" length="2" insert="true" update="false" />
+    <many-to-one name="MyOwner" column="OwnerKey" class="Owner" fetch="join" not-found="ignore"  />
+    <set name="NomsICanEat" table="CatNoms" lazy="false">
+      <key column="CatKey" />
+      <many-to-many class="DataDriver.Nom" column="NomKey" not-found="ignore" />
+    </set>
+
+  </class>
+</hibernate-mapping>
+

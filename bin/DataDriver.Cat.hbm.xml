@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="false">
+  <class name="Cat" table="Cat">
+    <id name="Id" column="CatKey" type="Int64" unsaved-value="0" generator="native">
+    </id>
+
+    <property name="Name" column="Name" not-null="false" type="System.String" length="20" insert="true" update="true" />
+    <property name="Weight" column="Weight" not-null="false" type="System.Double" insert="true" update="true" />
+    <property name="Age" column="Age" not-null="false" type="System.Int16" insert="true" update="true" />
+
+  </class>
+</hibernate-mapping>
+

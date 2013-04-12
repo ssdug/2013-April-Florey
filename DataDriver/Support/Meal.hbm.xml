@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DataDriver"
+                   namespace="DataDriver"
+                   default-lazy="false">
+  <class name="Meal" table="Meals">
+
+    <id name="Id" column="MealKey" type="int" unsaved-value="0" >
+      <generator class="increment"/>
+    </id>
+    
+    <property name="Time" column="TimeOfFeeding" not-null="false" type="System.DateTime" insert="true" update="true" />
+    <many-to-one name="MyCat" class="Cat" column="CatKey" fetch="join" not-found="ignore" />
+    <set name="Noms" inverse="false" lazy="true" table="NomsPerMeal" access="field.lowercase-underscore">
+      <key>
+        <column name="MealKey" />
+      </key>
+      <one-to-many class="DataDriver.Objects.NomsThisMeal" not-found="ignore" />
+    </set>
+
+  </class>
+</hibernate-mapping>
+  

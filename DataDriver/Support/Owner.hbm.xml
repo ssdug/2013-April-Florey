@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="DataDriver"
+                   namespace="DataDriver"
+                   default-lazy="false">
+  <class name="Owner" table="Owners">
+
+    <id name="Id" column="OwnerKey" type="int" unsaved-value="0" >
+      <generator class="increment"/>
+    </id>
+
+    <property name="Name" column="Name" not-null="false" type="System.String" length="40" insert="true" update="true" />
+
+    <set name="MyCats" inverse="true" lazy="true" access="field.camelcase-underscore">
+      <key>
+        <column name="OwnerKey" />
+      </key>
+      <one-to-many class="DataDriver.Cat, DataDriver" not-found="ignore" />
+    </set>
+
+  </class>
+</hibernate-mapping>
+
